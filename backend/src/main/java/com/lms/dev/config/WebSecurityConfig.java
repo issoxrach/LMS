@@ -75,20 +75,21 @@ public class WebSecurityConfig {
     }
 
     @Bean
-     public CorsConfigurationSource corsConfigurationSource() {
-    CorsConfiguration configuration = new CorsConfiguration();
-    
-    // الحل السريع: السماح للجميع (استخدم هذا لتجربة النشر)
-    configuration.setAllowedOriginPatterns(List.of("*")); 
-    
-    // أو الحل الآمن: ضع رابط الفرونت-إند الخاص بك هنا بدلاً من النجمة
-    // configuration.setAllowedOrigins(List.of("https://your-frontend-app.vercel.app"));
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        
+        // الحل السريع: السماح للجميع (استخدم هذا لتجربة النشر)
+        configuration.setAllowedOriginPatterns(List.of("*")); 
+        
+        // أو الحل الآمن: ضع رابط الفرونت-إند الخاص بك هنا بدلاً من النجمة
+        // configuration.setAllowedOrigins(List.of("https://your-frontend-app.vercel.app"));
 
-    configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-    configuration.setAllowedHeaders(List.of("*"));
-    configuration.setAllowCredentials(true);
-    
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/**", configuration);
-    return source;
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
+        
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 }
